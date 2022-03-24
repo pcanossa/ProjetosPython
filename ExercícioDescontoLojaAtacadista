@@ -1,0 +1,166 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled2.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyNJ9ZNqpQJcZA99QSpzWP0f",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/pcanossa/pcanossa/blob/main/Exerc%C3%ADcioDescontoLojaAtacadista\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "J7fdvl12v71n",
+        "outputId": "9e84333a-d787-49cc-bcc2-11ef971ab045"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Bem vindo(a) a loja atacadista de Patrícia Canossa Gagliardi\n",
+            "................................................................................................\n",
+            "Confira a tabela de descontos conforme a quantidade do produto adquirido:\n",
+            "_______________________________________________________________________________________________\n",
+            "   |     QUANTIDADE    |                   |      DESCONTO     |\n",
+            "   |       Até 9       |                   |   0% na unidade   |\n",
+            "   |   Entre 10 e 99   |                   |   5% na unidade   |\n",
+            "   |  Entre 100 e 999  |                   |   10% na unidade  |\n",
+            "   |  De 1000 ou mais  |                   |   15% na unidade  |\n",
+            "_______________________________________________________________________________________________\n",
+            "  \n",
+            "Informe o valor do produto:\n",
+            "-->15.45\n",
+            " \n",
+            "Informe a quantidade a ser adquirida:\n",
+            "-->67\n",
+            " \n",
+            "Desconto Adquirido: 5%            |Valor Unidade: R$14.68|\n",
+            "_______________________________________________________________________________________________________________\n",
+            "|Valor unitário: R$15.45|    |Valor total: R$1035.15|   |Valor de Desconto: R$51.76|   |Novo Valor: R$983.39|\n"
+          ]
+        }
+      ],
+      "source": [
+        "#Bloco visual inicial da loja ->\n",
+        "# Parte onde é colocado de forma visual a descrição da loja através de PRINT\n",
+        "print ('Bem vindo(a) a loja atacadista de Patrícia Canossa Gagliardi')\n",
+        "print('................................................................................................')\n",
+        "\n",
+        "#Bloco visual de apresentação da tabela de descontos ao cliente ->\n",
+        "# Nesse bloco, é apresentado ao cliente os descontos de acordo com a quantidade de produto adquirido\n",
+        "#Parte visual ainda sendo realizada com a função PRINT\n",
+        "print ('Confira a tabela de descontos conforme a quantidade do produto adquirido:')\n",
+        "print ('_______________________________________________________________________________________________')\n",
+        "print ('   |     QUANTIDADE    |                   |      DESCONTO     |')\n",
+        "print ('   |       Até 9       |                   |   0% na unidade   |')\n",
+        "print ('   |   Entre 10 e 99   |                   |   5% na unidade   |')\n",
+        "print ('   |  Entre 100 e 999  |                   |   10% na unidade  |')\n",
+        "print ('   |  De 1000 ou mais  |                   |   15% na unidade  |')\n",
+        "print ('_______________________________________________________________________________________________')\n",
+        "print('  ')\n",
+        "\n",
+        "#Bloco de aquisição de valores das variáveis->\n",
+        "#Nessa primeira parte do bloco, é solocitado ao usuário a inserção do valor do produto a ser adquirido\n",
+        "#Para isso é realizada a gravação do valor informado, na variável 'valor', através da função INPUT\n",
+        "print ('Informe o valor do produto:')\n",
+        "valor=float(input('-->'))\n",
+        "#--> Recolhido o valor do produto digitado na variável 'valor'\n",
+        "print(' ')\n",
+        "#--> Solicitado ao usuário inserir o valor\n",
+        "\n",
+        "print ('Informe a quantidade a ser adquirida:')\n",
+        "quantidade=int(input('-->'))\n",
+        "#--> Recolhido a quantidade de produto digitado na variável 'quantidade'\n",
+        "print(' ')\n",
+        "#--> Solicitado ao usuário inserir a quantidade de produto a ser adquirida\n",
+        "\n",
+        "#Bloco de verificação de valor de entrada->\n",
+        "#Nesse bloco, é criado uma varíavel para garantir que o valor e quantidade fornecidos não sejam nulos\n",
+        "# Para isso, é realizada a verificação por comparação booleana (TRUE ou FALSE)\n",
+        "validade=quantidade>0 and valor>0.01\n",
+        "#--> Uso de comparação do valor informado pelo usuário, se é maior que 1 centavo\n",
+        "#--> Uso de comparação do quantidade informada pelo usuário, se não é 0\n",
+        "#--> Se ambas condições verdadeiras, valor da variável 'validade'=TRUE sen não FALSE\n",
+        "\n",
+        "\n",
+        "#Bloco de Atribuição Booleana de variáveis->\n",
+        "#Nesse bloco, é realizada a verificação dos valores inseridos através de comparações booleanas (TRUE ou FALSE)\n",
+        "#Para isso, a quantidade é comparada com os valores mínimos de cada categoria de desconto\n",
+        "categoria1=quantidade<=9         #-->Quantidade máxima de 9 produtos = 1ª categoria de desconto\n",
+        "categoria2=quantidade>9 and quantidade<100       #-->Quantidade máxima de 99 produtos = 2ª categoria de desconto\n",
+        "categoria3=quantidade>99  and quantidade <1000     #-->Quantidade máxima de 999 produtos = 3ª categoria de desconto\n",
+        "categoria4=quantidade>=1000   #-->Quantidade acima de 1000 produtos = 4ª categoria de desconto\n",
+        "\n",
+        "#Bloco de aplicação de descontos->\n",
+        "#Nesse bloco, é verificado a validade das variáveis comparadas em booleada através da função IF\n",
+        "#Inicialmente se faz a verificação se o valor digitados pelo usuário não é nulo\n",
+        "if validade==True:\n",
+        "    #-->O retorno em forma de True da variável, demonstra que o valor de quantidade não é =0\n",
+        "    # -->nem o valor menos que 1 centavo\n",
+        "    #Validado os dados inseridos pelo usuário, é iniciado a verificação do desconto a ser aplicado através da\n",
+        "    #função if\n",
+        "    if categoria1==True:\n",
+        "         #-->Se a 1ª categoria de desconto, obtido por comparação booleana for True\n",
+        "        desconto=0\n",
+        "        #--> Designado o valor de desconto da categoria na variável 'desconto'\n",
+        "    if categoria2 == True:\n",
+        "        # -->Se a 2ª categoria de desconto, obtido por comparação booleana for True\n",
+        "        desconto = 5\n",
+        "        # --> Designado o valor de desconto da categoria na variável 'desconto'\n",
+        "    if categoria3 == True:\n",
+        "        # -->Se a 2ª categoria de desconto, obtido por comparação booleana for True\n",
+        "        desconto = 10\n",
+        "        # --> Designado o valor de desconto da categoria na variável 'desconto'\n",
+        "    if categoria4 == True:\n",
+        "        # -->Se a 2ª categoria de desconto, obtido por comparação booleana for True\n",
+        "        desconto = 15\n",
+        "        # --> Designado o valor de desconto da categoria na variável 'desconto'\n",
+        "    #Após verificado qual categoria de desconto, e o valor a ser aplicado, é realizado o cálculo do valor total dos\n",
+        "    #produtos com desconto\n",
+        "    valororiginal=valor*quantidade\n",
+        "    #--> Obtido valor total da compra sem descontos\n",
+        "    valordes=(valor*desconto)/100\n",
+        "    valortotaldes=valordes*quantidade\n",
+        "    valordesconto=valor-valordes\n",
+        "    #--> Obtido o valor total do desconto e o valor unitário após o desconto\n",
+        "    valortotal=quantidade*valordesconto\n",
+        "    #--> Obtido o valor total da compra com desconto\n",
+        "    print('Desconto Adquirido: {}%            |Valor Unidade: R${:.2f}|'.format(desconto, valordesconto))\n",
+        "    print ('_______________________________________________________________________________________________________________')\n",
+        "    #Bloco Visual de retorno dos dados ao usuário->\n",
+        "    #Nessa parte, é retornado o valor original de compra, valor de desconto, e valor total da compra com descontos\n",
+        "    print ('|Valor unitário: R${:.2f}|    |Valor total: R${:.2f}|   |Valor de Desconto: R${:.2f}|   |Novo Valor: R${:.2f}|'.format(valor, valororiginal, valortotaldes, valortotal))\n",
+        "\n",
+        "else:\n",
+        "    #Na verificação da validade dos valores inseridos pelo usuário, caso for FALSE, retorno mensagem de erro ao usuário\n",
+        "    print ('Valor digitado não válido...')\n",
+        "    #--> Informa ao usuário que os valores digitados são inválidos\n"
+      ]
+    }
+  ]
+}
